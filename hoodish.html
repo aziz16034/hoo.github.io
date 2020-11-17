@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="hood.css">
+ 
+    <script>
+        "use strict";
+
+$(() => {
+  let stickyTop = 0,
+      scrollTarget = false;
+  let timeline = $('.timeline__nav'),
+      items = $('li', timeline),
+      milestones = $('.timeline__section .milestone'),
+      offsetTop = parseInt(timeline.css('top'));
+  const TIMELINE_VALUES = {
+    start: 190,
+    step: 30
+  };
+  $(window).resize(function () {
+    timeline.removeClass('fixed');
+    stickyTop = timeline.offset().top - offsetTop;
+    $(window).trigger('scroll');
+  }).trigger('resize');
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > stickyTop) {
+      timeline.addClass('fixed');
+    } else {
+      timeline.removeClass('fixed');
+    }
+  }).trigger('scroll');
+  items.find('span').click(function () {
+    let li = $(this).parent(),
+        index = li.index(),
+        milestone = milestones.eq(index);
+
+    if (!li.hasClass('active') && milestone.length) {
+      scrollTarget = index;
+      let scrollTargetTop = milestone.offset().top - 80;
+      $('html, body').animate({
+        scrollTop: scrollTargetTop
+      }, {
+        duration: 400,
+        complete: function complete() {
+          scrollTarget = false;
+        }
+      });
+    }
+  });
+  $(window).scroll(function () {
+    let viewLine = $(window).scrollTop() + $(window).height() / 3,
+        active = -1;
+
+    if (scrollTarget === false) {
+      milestones.each(function () {
+        if ($(this).offset().top - viewLine > 0) {
+          return false;
+        }
+
+        active++;
+      });
+    } else {
+      active = scrollTarget;
+    }
+
+    timeline.css('top', -1 * active * TIMELINE_VALUES.step + TIMELINE_VALUES.start + 'px');
+    items.filter('.active').removeClass('active');
+    items.eq(active != -1 ? active : 0).addClass('active');
+  }).trigger('scroll');
+});
+    </script>
+    
+
+<ul id='timeline'>
+
+  
+  <li class='work'>
+      
+    <input class='radio' id='work5' name='works' type='radio' checked>
+    
+    <div class="relative">
+      <label for='work5'><strong>Enterprise Risk Management Intern</strong></label>
+      
+      <span class='date'> 2020</span>
+      <span class='circle'></span>
+    </div>
+    
+  
+    
+    
+    
+    <div class='content'>
+      <p>
+        #dd571c Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.
+        <br>
+       <br>                             <img src="http://hoodishdomun.com/wp-content/uploads/2020/04/customer1.jpg" 
+           class="center">
+        
+      </p>
+    </div>
+  </li>
+  
+  
+  <li class='work'>
+    <input class='radio' id='work3' name='works' type='radio'>
+    <div class="relative">
+      <label for='work3'><strong>Castle Placement Capital Madness VI Winner</strong></label>
+      <span class='date'>2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.
+      </p>
+    </div>
+  </li>
+  
+  
+  <li class='work'>
+    <input class='radio' id='work30' name='works' type='radio'>
+    <div class="relative">
+      <label for='work30'><strong>Testing</strong></label>
+      <span class='date'>2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>Lorem ipszsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.</p>
+    </div>
+  </li>
+
+  
+  <li class='work'>
+      
+    <input class='radio' id='work50' name='works' type='radio' checked>
+    
+    <div class="relative">
+      <label for='work50'><strong>Abdul </strong></label>
+      
+      <span class='date'> 2019</span>
+      <span class='circle'></span>
+    </div>
+
+
+    <div class='content'>
+        <p>
+          #dd571c Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.
+          <br>
+         <br>                           
+          
+        </p>
+      </div>
+    </li>
+
+
+
+    <li class='work'>
+      
+        <input class='radio' id='work576' name='works' type='radio' checked>
+        
+        <div class="relative">
+          <label for='work576'><strong>Hoodish </strong></label>
+          
+          <span class='date'> 2016</span>
+          <span class='circle'></span>
+        </div>
+
+
+
+        <div class='content'>
+            <p>
+              #dd571c Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.
+              <br>
+             <br>                           
+              
+            </p>
+          </div>
+        </li>
+
+
+    
+        <li class='work'>
+      
+            <input class='radio' id='work589' name='works' type='radio' checked>
+            
+            <div class="relative">
+              <label for='work589'><strong>Harami </strong></label>
+              
+              <span class='date'> 2016</span>
+              <span class='circle'></span>
+            </div>
+    
+    
+    
+            <div class='content'>
+                <p>
+                  #dd571c Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.
+                  <br>
+                 <br>                           
+                  
+                </p>
+              </div>
+            </li>
+
+
+    
+            <li class='work'>
+      
+                <input class='radio' id='work5900' name='works' type='radio' checked>
+                
+                <div class="relative">
+                  <label for='work5900'><strong>Mc </strong></label>
+                  
+                  <span class='date'> 2016</span>
+                  <span class='circle'></span>
+                </div>
+        
+        
+        
+                <div class='content'>
+                    <p>
+                      #dd571c Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.
+                      <br>
+                     <br>                           
+                      
+                    </p>
+                  </div>
+                </li>
+            
+        
+        
+    
+<!-- track -->
+<section id="track">
+    <nav id="about">
+        <a href="#" id="about-trigger">Info</a>
+    </nav>
+    <nav id="dates">
+        <a href="#" class="date open" data-view="intro">Nov <i>12</i> 2020</a><a href="#" class="date open" data-view="whitehouse">Jun <i>17</i> 2013</a><a href="#" class="date open" data-view="twitter">May <i>31</i> 2012</a><a href="#" class="date open" data-view="columbia">Jan <i>07</i> 2012</a><a href="#" class="date open" data-view="nclud">Jun <i>04</i> 2012</a><a href="#" class="date open" data-view="yale">Jul <i>20</i> 2012</a><a href="#" class="date open" data-view="apple">May <i>15</i> 2012</a><a href="#" class="date open" data-view="canvas">Jan <i>04</i> 2012</a><a href="#" class="date open" data-view="oracle">Oct <i>20</i> 2011</a><a href="#" class="date open" data-view="teaching">Sep <i>01</i> 2011</a><a href="#" class="date open" data-view="print">Mar <i>15</i> 2011</a><a href="#" class="date open" data-view="mashable">Oct <i>20</i> 2010</a><a href="#" class="date open" data-view="puma">Jun <i>12</i> 2009</a><a href="#" class="date open" data-view="ogilvy">Apr <i>15</i> 2008</a><a href="#" class="date open" data-view="ncluded">Jan <i>18</i> 2007</a><a href="#" class="date open" data-view="fool">Jan <i>04</i> 2006</a><a href="#" class="date open" data-view="cygnus">Mar <i>15</i> 2004</a><a href="#" class="date open" data-view="discovery">Jun <i>01</i> 2002</a><a href="#" class="date open" data-view="umd">Sep <i>15</i> 1999</a>		</nav>
+    <nav id="ticker">
+        <a href="#" id="ticker-moment"></a>
+    </nav>
+    <nav id="keys">
+        <a href="#" id="KeyTop"></a>
+        <a href="#" id="KeyRight"></a>
+        <a href="#" id="KeyBottom"></a>
+        <a href="#" id="KeyLeft"></a>
+    </nav>
+</section>
+
+<script src="/theme/js/script.js"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37384038-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>    
+    
+
+
+
+
+</ul>
+
+
+    
+</body>
+</html>
